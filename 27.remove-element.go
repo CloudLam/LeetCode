@@ -65,28 +65,15 @@
  * 
  */
 func removeElement(nums []int, val int) int {
-    if len(nums) == 0 {
-		return 0
-	}
-	if len(nums) == 1 && nums[0] != val {
-		return 1
-	}
-	result := 0
-	for i := len(nums) - 1; i >= result; {
-		if nums[result] == val && nums[i] != val {
-			nums[result] = nums[i]
-			result++
-			i--
-		}
-		if nums[result] != val && result < i {
-			result++
-		}
-		if nums[i] != val && result == i {
-			result++
-		}
-		if nums[i] == val {
-			i--
-		}
-	}
-	return result
+    result := 0
+    length := len(nums)
+    for result < length {
+        if nums[result] == val {
+            nums[result] = nums[length-1]
+            length--
+        } else {
+            result++
+        }
+    }
+    return result
 }
