@@ -33,5 +33,14 @@
  * 
  */
 func getRow(rowIndex int) []int {
-    
+    result := []int{1}
+    for i := 1; i <= rowIndex; i++ {
+        current := []int{1}
+        for j := 0; j < len(result) - 1; j++ {
+            current = append(current, result[j] + result[j+1])
+        }
+        current = append(current, 1)
+        result = current
+    }
+    return result
 }
